@@ -705,6 +705,7 @@ MonoBehaviour:
   open: 0
   minimized: 0
   rect: {fileID: 0}
+  defaultSize: {x: 100, y: 100}
   displaySize: {x: 100, y: 100}
 --- !u!1 &5428871470616512435
 GameObject:
@@ -992,7 +993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1590650308593171936
 RectTransform:
   m_ObjectHideFlags: 0
