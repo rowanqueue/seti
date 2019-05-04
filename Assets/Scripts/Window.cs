@@ -7,6 +7,7 @@ public class Window : MonoBehaviour
 {
     public bool open;
     public bool minimized;
+    public Sprite icon;
     [HideInInspector]
     public RectTransform rect;
     RectTransform display;
