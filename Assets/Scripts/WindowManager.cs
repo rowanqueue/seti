@@ -29,7 +29,7 @@ public class WindowManager : MonoBehaviour
             windows.Add(window);
             GameObject barObj = Instantiate(barObject, toolBar);
             Bar bar = barObj.GetComponent<Bar>();
-            bar.rect.anchoredPosition = new Vector2(50+(100*bars.Count), 0);
+            bar.rect.anchoredPosition = new Vector2(85+(100*bars.Count), 0);
             bar.window = window;
             bars.Add(bar);
         }

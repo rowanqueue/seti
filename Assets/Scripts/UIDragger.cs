@@ -18,6 +18,7 @@ public class UIDragger : EventTrigger
     public override void OnPointerDown(PointerEventData eventData)
     {
         dragging = true;
+        Debug.Log("A");
         mouseOffset = new Vector2(Input.mousePosition.x - mover.position.x, 0);
     }
     public override void OnPointerUp(PointerEventData eventData)
