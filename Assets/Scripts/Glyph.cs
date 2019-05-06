@@ -13,9 +13,11 @@ public class Glyph : MonoBehaviour
     public GameObject spritePrefab;
     public Vector2 topLeft;
     public Vector2 botRight;
+    public SpriteRenderer sr;
     // Start is called before the first frame update
     void Start()
     {
+        sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
         topLeft = Vector2.zero;
         botRight = Vector2.zero;
         points = new List<Vector2>();
@@ -29,14 +31,15 @@ public class Glyph : MonoBehaviour
             new Vector2Int(1,1),new Vector2Int(1,-1),new Vector2Int(-1,-1),new Vector2Int(-1,1)
         };
         DrawWord();
+
     }
     public void Reset()
     {
         points = new List<Vector2>();
         lr.positionCount = 0;
-        foreach(Transform child in transform)
+        for(int i = transform.childCount-1; i > 0; i--)
         {
-            Destroy(child.gameObject);
+            Destroy(transform.GetChild(i).gameObject);
         }
         botRight = Vector2.zero;
         topLeft = Vector2.zero;
@@ -118,16 +121,17 @@ public class Glyph : MonoBehaviour
             }
             Vector3 spritePos = (Vector3Int)pos;
             spritePos *= transform.localScale.x;
-            GameObject obj = Instantiate(spritePrefab,spritePos,Quaternion.identity, transform);
+            GameObject obj = Instantiate(spritePrefab,Vector2.zero,Quaternion.identity, transform);
+            obj.transform.localPosition = spritePos;
             SpriteRenderer sr = obj.GetComponent<SpriteRenderer>();
+            //sr.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             sr.sprite = sprites[iS];
             sr.color = Color.grey;
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+        //set grabber
+        sr.transform.localScale = new Vector2(Mathf.Abs(botRight.x-topLeft.x),Mathf.Abs(topLeft.y-botRight.y))*3f;
+        sr.transform.localPosition = new Vector2((topLeft.x + botRight.x)/2, (botRight.y + topLeft.y)/2)*transform.localScale;
+        //sr.transform.localScale = new Vector2();
     }
 }

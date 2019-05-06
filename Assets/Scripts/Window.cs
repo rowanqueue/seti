@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[ExecuteInEditMode]
 public class Window : MonoBehaviour
 {
     public bool open;
@@ -10,8 +11,10 @@ public class Window : MonoBehaviour
     public Sprite icon;
     [HideInInspector]
     public RectTransform rect;
-    RectTransform display;
-    RectTransform grabBar;
+    [HideInInspector]
+    public RectTransform display;
+    [HideInInspector]
+    public RectTransform grabBar;
     // Start is called before the first frame update
     void Awake()
     {
